@@ -8,11 +8,6 @@ function runUserCode(userInput) {
   return eval(userInput);
 }
 
-function runCommand(userInput) {
-  // Vulnerability: command injection via unsanitized shell execution (CWE-78).
-  exec("echo " + userInput);
-}
-
 function buildQuery(userId) {
   // Vulnerability: SQL injection pattern via string concatenation (CWE-89).
   return "SELECT * FROM users WHERE id = '" + userId + "'";
@@ -21,4 +16,4 @@ function buildQuery(userId) {
 // Vulnerability: hardcoded credential/secret (CWE-798).
 const HARDCODED_PASSWORD = "P@ssw0rd123!";
 
-module.exports = { runUserCode, runCommand, buildQuery, HARDCODED_PASSWORD };
+module.exports = { runUserCode, buildQuery, HARDCODED_PASSWORD };
