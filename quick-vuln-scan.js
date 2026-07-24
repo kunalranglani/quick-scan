@@ -8,11 +8,6 @@ function runUserCode(userInput) {
   return eval(userInput);
 }
 
-function runCommand(userInput) {
-  // Vulnerability: command injection via unsanitized shell execution (CWE-78).
-  exec("echo " + userInput);
-}
-
 function buildQuery(userId) {
   // Vulnerability: SQL injection pattern via string concatenation (CWE-89).
   return "SELECT * FROM users WHERE id = '" + userId + "'";
